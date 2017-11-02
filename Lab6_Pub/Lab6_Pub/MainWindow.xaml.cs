@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,17 @@ namespace Lab6_Pub
         public MainWindow()
         {
             InitializeComponent();
+            Thread Bouncer = new Thread(() =>
+            {
+                int BarIsOpen = 0;
+                if (BarIsOpen < 6)
+                {
+                    Thread.Sleep(1000);
+                    BarIsOpen++;
+                }
+                else Environment.Exit(0);
+            });
+            Bouncer.Start();
         }
     }
 }
