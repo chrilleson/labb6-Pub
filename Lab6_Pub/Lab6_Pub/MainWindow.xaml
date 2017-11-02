@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab6_Pub"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="348.5" Width="802.5">
     <Grid>
-        
+        <ListBox x:Name="listBoxBartender" HorizontalAlignment="Left" Height="210" Margin="82,54,0,0" VerticalAlignment="Top" Width="128"/>
+        <ListBox x:Name="listBoxWaitress" HorizontalAlignment="Left" Height="210" Margin="240,54,0,0" VerticalAlignment="Top" Width="128"/>
+        <ListBox x:Name="listBoxGuests" HorizontalAlignment="Left" Height="210" Margin="400,54,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label x:Name="lblBartender" Content="Bartender" HorizontalAlignment="Left" Height="24" Margin="82,16,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label x:Name="lblWaitress" Content="Waitress" HorizontalAlignment="Left" Height="24" Margin="240,16,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label x:Name="lblGuests" Content="Guests" HorizontalAlignment="Left" Height="24" Margin="400,16,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label x:Name="lblChairs" Content="Chairs" HorizontalAlignment="Left" Height="30" Margin="560,54,0,0" VerticalAlignment="Top" Width="195"/>
+        <Label x:Name="lblGlasses" Content="Glasses" HorizontalAlignment="Left" Height="30" Margin="560,105,0,0" VerticalAlignment="Top" Width="195"/>
+
     </Grid>
 </Window>
