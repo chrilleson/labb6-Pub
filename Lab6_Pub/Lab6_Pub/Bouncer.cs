@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab6_Pub
 {
-    class Program
+    class Bouncer
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
