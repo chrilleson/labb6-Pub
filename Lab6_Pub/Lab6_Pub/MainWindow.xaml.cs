@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Lab6_Pub
 {
@@ -25,23 +25,25 @@ namespace Lab6_Pub
         public MainWindow()
         {
             InitializeComponent();
-            Thread Bouncer = new Thread(() =>
+            //Thread Bouncer = new Thread(() => OpenLength(10));
+
+            new Thread(() =>
             {
-                int BarIsOpen = 0;
+                //Sätt tid för hur länge baren ska vara öppet.
+                OpenLength(10);
 
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                if (BarIsOpen < 6)
-                {
-                    Thread.Sleep(1000);
-                    BarIsOpen++;
-                }
-                stopwatch.Stop();   
-                lblChairs.Content = "Jag körde";
+                Environment.Exit(0);
+            }).Start();
 
-                // else Environment.Exit(0);
-            });
-            Bouncer.Start();
+            //Bouncer.Start();
+        }
+        static void OpenLength(int maxNum)
+        {
+            for (int i = 0; i <= maxNum; i++)
+            {
+                Console.WriteLine(i);
+                Thread.Sleep(1000);
+            }
         }
     }
 }
