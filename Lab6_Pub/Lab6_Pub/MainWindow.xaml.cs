@@ -32,7 +32,7 @@ namespace Lab6_Pub
             {
                 //Sätt tid för hur länge baren ska vara öppet.
                 OpenLength(5);
-                MainWindow.main.Status = "Det fungerade.";
+                MainWindow.main.Status = "The bar is closed.";
             }).Start();
             //Bouncer.Start();
         }
@@ -40,8 +40,8 @@ namespace Lab6_Pub
         internal static MainWindow main;
         internal string Status
         {
-            get { return lblGlasses.Content.ToString(); }
-            set { Dispatcher.Invoke(new Action(() => { lblGlasses.Content = value; })); }
+            get { return lblBarOpen.Content.ToString(); }
+            set { Dispatcher.Invoke(new Action(() => { lblBarOpen.Content = value; })); }
         }
         static void OpenLength(int maxNum)
         {
