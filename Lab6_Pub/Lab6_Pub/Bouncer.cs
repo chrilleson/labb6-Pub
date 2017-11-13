@@ -8,5 +8,9 @@ namespace Lab6_Pub
 {
     class Bouncer
     {
+        Task bouncer = Task.Run(() =>
+        {
+
+        });
     }
 }

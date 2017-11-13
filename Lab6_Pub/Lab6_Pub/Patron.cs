@@ -14,5 +14,20 @@ namespace Lab6_Pub
         {
             name = Name;
         }
+
+        List<string> NameList = new List<string>()
+        {
+
+        "Liam",
+        "Mason",
+        "Jacob",
+        "William",
+        "Ethan",
+        "James",
+        "Alexander",
+        "Michael",
+        "Benjamin",
+        "Elijah"
+        };
     }
 }
