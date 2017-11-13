@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -27,12 +28,18 @@ namespace Lab6_Pub
             Thread Bouncer = new Thread(() =>
             {
                 int BarIsOpen = 0;
+
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 if (BarIsOpen < 6)
                 {
                     Thread.Sleep(1000);
                     BarIsOpen++;
                 }
-                else Environment.Exit(0);
+                stopwatch.Stop();   
+                lblChairs.Content = "Jag körde";
+
+                // else Environment.Exit(0);
             });
             Bouncer.Start();
         }
