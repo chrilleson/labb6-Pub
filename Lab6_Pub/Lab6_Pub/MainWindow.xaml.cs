@@ -24,18 +24,23 @@ namespace Lab6_Pub
     {
         public MainWindow()
         {
+            main = this;
             InitializeComponent();
             //Thread Bouncer = new Thread(() => OpenLength(10));
-
+            
             new Thread(() =>
             {
                 //Sätt tid för hur länge baren ska vara öppet.
-                OpenLength(10);
-
-                Environment.Exit(0);
+                OpenLength(5);
+                MainWindow.main.Status = "Det fungerade.";
             }).Start();
-
             //Bouncer.Start();
+        }
+        internal static MainWindow main;
+        internal string Status
+        {
+            get { return lblGlasses.Content.ToString(); }
+            set { Dispatcher.Invoke(new Action(() => { lblGlasses.Content = value; })); }
         }
         static void OpenLength(int maxNum)
         {
