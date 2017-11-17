@@ -36,7 +36,7 @@ namespace Lab6_Pub
             }).Start();
             //Bouncer.Start();
         }
-        //To be able to change lblGlasses content in our thread after X seconds.
+        //To be able to change lblBarOpen content in our thread after X seconds.
         internal static MainWindow main;
         internal string Status
         {
