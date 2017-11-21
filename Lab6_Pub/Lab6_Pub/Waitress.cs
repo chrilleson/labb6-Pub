@@ -18,13 +18,16 @@ namespace Lab6_Pub
         public bool BarIsOpen { get; set; }
         private int waiterSpeed = 1;
 
-        public void Work(Action<string> Callback, ConcurrentStack<Glass> DirtyGlassStack, ConcurrentStack<Glass> CleanGlassStack,bool IsWorking, ConcurrentQueue<Patron>PatronQueue, int waitressWashingTime, int waitressPickingGlassesTime, int glasses)
+        public void Work(Action<string> callback, ConcurrentStack<Glass> dirtyGlassStack,
+            ConcurrentStack<Glass> cleanGlassStack, bool bouncerIsWorking, ConcurrentQueue<Patron> patronQueue,
+            int waiterWashingSec, int waiterPickingGlassesSec, int glasses)
         {
-            this.Callback = Callback;
-            this.DirtyGlassStack = DirtyGlassStack;
-            this.CleanGlassStack = CleanGlassStack;
-            this.BarIsOpen = IsWorking;
-            this.PatronQueue = PatronQueue;
+            this.Callback = callback;
+            this.DirtyGlassStack = dirtyGlassStack;
+            this.CleanGlassStack = cleanGlassStack;
+            this.BarIsOpen = bouncerIsWorking;
+            this.PatronQueue = patronQueue;
+
             Task.Run(() =>
             {
                 while (BarIsOpen)
@@ -34,9 +37,9 @@ namespace Lab6_Pub
                         if (!DirtyGlassStack.IsEmpty)
                         {
                             Callback("The waiter picks up dirty glasses from a table.");
-                            Thread.Sleep(waitressWashingTime / waiterSpeed);
+                            Thread.Sleep(waiterWashingSec / waiterSpeed);
                             Callback("The waiter is washing glasses.");
-                            Thread.Sleep(waitressPickingGlassesTime / waiterSpeed);
+                            Thread.Sleep(waiterPickingGlassesSec / waiterSpeed);
                             Callback("The waiter places the clean glasses back on the shelf.");
                             for (int i = 0; i < DirtyGlassStack.Count(); i++)
                             {
@@ -46,7 +49,7 @@ namespace Lab6_Pub
                         }
                     }
                 }
-                Callback("The waiter goes home.");
+                callback("The waiter goes home.");
             });
         }
         public void StopServing()

@@ -27,6 +27,10 @@ namespace Lab6_Pub
         ConcurrentQueue<string> uiPatronCountQueue = new ConcurrentQueue<string>();
         ConcurrentQueue<Patron> QueuePatron = new ConcurrentQueue<Patron>();
 
+
+        ConcurrentStack<Glass> cleanGlassStack = new ConcurrentStack<Glass>();
+        ConcurrentStack<Glass> dirtyGlassStack = new ConcurrentStack<Glass>();
+
         Bouncer bouncer = new Bouncer();
         Bartender bartender = new Bartender();
         Waitress waitress = new Waitress();
