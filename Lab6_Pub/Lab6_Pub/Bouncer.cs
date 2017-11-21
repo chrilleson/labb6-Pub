@@ -35,6 +35,7 @@ namespace Lab6_Pub
         "Elijah"
         };
 
+        //Bouncers normal work
         public void BouncerWork(Action<string>Callback, Action<Patron>CallbackPatron, int BarOpenBouncer)
         {
             IsWorking = true;

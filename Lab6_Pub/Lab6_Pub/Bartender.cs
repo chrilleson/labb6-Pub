@@ -19,7 +19,7 @@ namespace Lab6_Pub
         public bool BarIsOpen { get; set; }
         private int bartenderSpeed = 1;
 
-        public void Work(ConcurrentQueue<Patron> patronQueue, ConcurrentQueue<Patron> bartenderQueue, Action<string> callback, Action<string> PatronListCallback, ConcurrentStack<Glass> cleanGlassStack, ConcurrentStack<Glass> dirtyGlassStack, bool bartenderIsWorking, ConcurrentStack<Chair> freeChairStack, ConcurrentQueue<string> uiPatronCountDequeue )
+        public void BartenderWork(ConcurrentQueue<Patron> patronQueue, ConcurrentQueue<Patron> bartenderQueue, Action<string> callback, Action<string> PatronListCallback, ConcurrentStack<Glass> cleanGlassStack, ConcurrentStack<Glass> dirtyGlassStack, bool bartenderIsWorking, ConcurrentStack<Chair> freeChairStack, ConcurrentQueue<string> uiPatronCountDequeue )
         {
             this.Callback = callback;
             this.PatronQueue = patronQueue;

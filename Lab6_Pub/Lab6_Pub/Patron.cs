@@ -30,6 +30,7 @@ namespace Lab6_Pub
         public string PatronDrinking { get; set; }
         Random rnd = new Random();
 
+        //Function that makes the Patron sit down and drink, then leaves the bar
         public void Sit(Action<string> Callback, ConcurrentStack<Chair> EmptyChairStack, ConcurrentStack<Glass> DirtyGlassStack, ConcurrentQueue<Patron>PatronQueue, ConcurrentQueue<string> uiPatronCountDeQueue, int speed)
         {
             this.Callback = Callback;
