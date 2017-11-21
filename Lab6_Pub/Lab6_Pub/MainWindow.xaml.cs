@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.Concurrent;
 using System.Diagnostics;
+
 
 namespace Lab6_Pub
 {
@@ -22,34 +24,42 @@ namespace Lab6_Pub
     /// </summary>
     public partial class MainWindow : Window
     {
+        ConcurrentQueue<string> uiPatronCountQueue = new ConcurrentQueue<string>();
+        ConcurrentQueue<Patron> QueuePatron = new ConcurrentQueue<Patron>();
+
+        Bouncer bouncer = new Bouncer();
+        Bartender bartender = new Bartender();
+        Waitress waitress = new Waitress();
+
+        private int OpenBar = 120;
+        private int BarOpenBouncer = 120;
+
         public MainWindow()
         {
-            main = this;
             InitializeComponent();
-            //Thread Bouncer = new Thread(() => OpenLength(10));
-            
-            new Thread(() =>
-            {
-                //Sätt tid för hur länge baren ska vara öppet.
-                OpenLength(5);
-                MainWindow.main.Status = "The bar is closed.";
-            }).Start();
-            //Bouncer.Start();
+
         }
-        //To be able to change lblGlasses content in our thread after X seconds.
-        internal static MainWindow main;
-        internal string Status
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            get { return lblBarOpen.Content.ToString(); }
-            set { Dispatcher.Invoke(new Action(() => { lblBarOpen.Content = value; })); }
+            btnStart.IsEnabled = false;
+
+            bouncer.BouncerWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
         }
-        static void OpenLength(int maxNum)
+
+        private void PatronUpdateList(string info)
         {
-            for (int i = 0; i <= maxNum; i++)
+            Dispatcher.Invoke(() =>
             {
-                Console.WriteLine(i);
-                Thread.Sleep(1000);
-            }
+                listBoxPatron.Items.Insert(0, info);
+
+            });
+        }
+
+        private void AddPatronQueue(Patron p)
+        {
+            QueuePatron.Enqueue(p);
+            uiPatronCountQueue.Enqueue(p.Name);
         }
     }
 }
