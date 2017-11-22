@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 
 namespace Lab6_Pub
 {
-    class Bartender
+    public class Bartender
     {
         private Action<string> Callback;
         private ConcurrentQueue<Patron> PatronQueue;

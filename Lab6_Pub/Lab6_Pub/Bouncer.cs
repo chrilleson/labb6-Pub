@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Lab6_Pub
 {
-    class Bouncer
+    public class Bouncer
     {
         private Action<string> Callback;
         private Action<Patron> CallbackPatron;
