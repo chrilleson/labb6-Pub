@@ -56,7 +56,8 @@ namespace Lab6_Pub
         public MainWindow()
         {
             InitializeComponent();
-            //bouncer.ClosingTime += waitress.StopServing;
+            bouncer.ClosingTime += waitress.StopServing;
+            bouncer.ClosingTime += bartender.StopServing;
 
         }
 
@@ -73,6 +74,7 @@ namespace Lab6_Pub
 
             bouncer.BouncerWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
             bartender.BartenderWork(QueuePatron, QueueBartender, BartenderUpdateList, PatronUpdateList, cleanGlassStack,dirtyGlassStack,bouncer.IsWorking,EmptyChairStack, uiPatronCountQueue);
+            waitress.Work(WaitressUpdateList, dirtyGlassStack, cleanGlassStack, QueuePatron, bouncer.IsWorking, waitressCleaningGlassesTime, waitressPickingGlassesTime, Glasses);
         }
         //Event handler for the on screen timer
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -97,6 +99,7 @@ namespace Lab6_Pub
 
             });
         }
+        //Update the bartender listbox
         private void BartenderUpdateList(string info)
         {
             Dispatcher.Invoke(() =>
@@ -106,6 +109,15 @@ namespace Lab6_Pub
                 lblChairs.Content = $"Empty seats int the bar: {EmptyChairStack.Count()}. ({Chairs} total).";
             });
         }
+        //Update the waitress listbox
+        private void WaitressUpdateList(string info)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                listBoxWaitress.Items.Insert(0, info);
+                lblGlasses.Content = $"Glasses on the shelf: {cleanGlassStack.Count()}. ({Glasses} total).";
+            });
+        }
 
         //Function that adds a Patron to the bar
         private void AddPatronQueue(Patron p)
@@ -113,7 +125,7 @@ namespace Lab6_Pub
             QueuePatron.Enqueue(p);
             uiPatronCountQueue.Enqueue(p.Name);
         }
-
+        //Creates glasses and adds them to the concurrentstack
         private void GlassStack()
         {
             for (int i = 0; i < Glasses; i++)
@@ -122,7 +134,7 @@ namespace Lab6_Pub
                 Console.WriteLine("Added a glass to the stack.");
             }
         }
-
+        //Creates chairs and adds them to the concurrentstack
         private void ChairStack()
         {
             for(int i = 0; i < Chairs; i++)
