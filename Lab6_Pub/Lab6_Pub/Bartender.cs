@@ -16,7 +16,7 @@ namespace Lab6_Pub
         private ConcurrentStack<Glass> DirtyGlassStack;
         private ConcurrentStack<Glass> CleanGlassStack;
         private ConcurrentStack<Chair> FreeChairStack;
-        public bool BarIsOpen { get; set; }
+        public bool IsWorking { get; set; }
         private int bartenderSpeed = 1;
 
         public void BartenderWork(ConcurrentQueue<Patron> patronQueue, ConcurrentQueue<Patron> bartenderQueue, Action<string> callback, Action<string> PatronListCallback, ConcurrentStack<Glass> cleanGlassStack, ConcurrentStack<Glass> dirtyGlassStack, bool bartenderIsWorking, ConcurrentStack<Chair> freeChairStack, ConcurrentQueue<string> uiPatronCountDequeue )
@@ -27,10 +27,10 @@ namespace Lab6_Pub
             this.DirtyGlassStack = dirtyGlassStack;
             this.CleanGlassStack = cleanGlassStack;
             this.FreeChairStack = freeChairStack;
-            this.BarIsOpen = bartenderIsWorking;
+            this.IsWorking = bartenderIsWorking;
             Task.Run(() =>
            {
-               while(BarIsOpen || !uiPatronCountDequeue.IsEmpty)
+               while(IsWorking || !uiPatronCountDequeue.IsEmpty)
                {
                    if(!PatronQueue.IsEmpty && !BartenderQueue.IsEmpty)
                    {
@@ -62,7 +62,7 @@ namespace Lab6_Pub
         }
         public void StopServing()
         {
-            BarIsOpen = false;
+            IsWorking = false;
         }
         public void ChangeSpeed(int speed)
         {

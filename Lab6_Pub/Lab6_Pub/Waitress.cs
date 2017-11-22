@@ -10,37 +10,34 @@ namespace Lab6_Pub
 {
     public class Waitress
     {
-        /* 
         private Action<string> Callback;
         private ConcurrentStack<Glass> DirtyGlassStack;
         private ConcurrentStack<Glass> CleanGlassStack;
         private ConcurrentQueue<Patron> PatronQueue;
-        public bool BarIsOpen { get; set; }
-        private int waiterSpeed = 1;
+        public bool IsWorking { get; set; }
+        private int WaitressSpeed = 1;
 
-        public void Work(Action<string> callback, ConcurrentStack<Glass> dirtyGlassStack,
-            ConcurrentStack<Glass> cleanGlassStack, bool bouncerIsWorking, ConcurrentQueue<Patron> patronQueue,
-            int waiterWashingSec, int waiterPickingGlassesSec, int glasses)
+        public void Work(Action<string> callback, ConcurrentStack<Glass> dirtyGlassStack, ConcurrentStack<Glass> cleanGlassStack, ConcurrentQueue<Patron> patronQueue, bool isWorking, int waitressCleanTime, int waitressPickingTime, int glasses)
         {
             this.Callback = callback;
             this.DirtyGlassStack = dirtyGlassStack;
             this.CleanGlassStack = cleanGlassStack;
-            this.BarIsOpen = bouncerIsWorking;
             this.PatronQueue = patronQueue;
+            this.IsWorking = isWorking;
 
             Task.Run(() =>
             {
-                while (BarIsOpen)
+                while (IsWorking)
                 {
                     while (CleanGlassStack.Count() != glasses)
                     {
                         if (!DirtyGlassStack.IsEmpty)
                         {
-                            Callback("The waiter picks up dirty glasses from a table.");
-                            Thread.Sleep(waiterWashingSec / waiterSpeed);
-                            Callback("The waiter is washing glasses.");
-                            Thread.Sleep(waiterPickingGlassesSec / waiterSpeed);
-                            Callback("The waiter places the clean glasses back on the shelf.");
+                            Callback("The waitress is picking up dirty glasses.");
+                            Thread.Sleep(waitressCleanTime / WaitressSpeed);
+                            Callback("The waitress is washing the dirty glasses.");
+                            Thread.Sleep(waitressPickingTime / WaitressSpeed);
+                            Callback("The waitress is placing the glasses on the shelf.");
                             for (int i = 0; i < DirtyGlassStack.Count(); i++)
                             {
                                 DirtyGlassStack.TryPop(out Glass g);
@@ -49,17 +46,12 @@ namespace Lab6_Pub
                         }
                     }
                 }
-                callback("The waiter goes home.");
+                Callback("The waitress goes home.");
             });
         }
         public void StopServing()
         {
-            BarIsOpen = false;
+            IsWorking = false;
         }
-
-        public void ChangeSpeed(int speed)
-        {
-            this.waiterSpeed = speed;
-        }*/
     }
 }
