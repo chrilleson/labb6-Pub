@@ -17,7 +17,8 @@ namespace Lab6_Pub
         public bool IsWorking { get; set; }
         private int WaitressSpeed = 1;
 
-        public void Work(Action<string> callback, ConcurrentStack<Glass> dirtyGlassStack, ConcurrentStack<Glass> cleanGlassStack, ConcurrentQueue<Patron> patronQueue, bool isWorking, int waitressCleanTime, int waitressPickingTime, int glasses)
+        public void Work(Action<string> callback, ConcurrentStack<Glass> dirtyGlassStack, ConcurrentStack<Glass> cleanGlassStack, 
+            ConcurrentQueue<Patron> patronQueue, bool isWorking, int waitressCleanTime, int waitressPickingTime, int glasses)
         {
             this.Callback = callback;
             this.DirtyGlassStack = dirtyGlassStack;
@@ -46,7 +47,7 @@ namespace Lab6_Pub
                         }
                     }
                 }
-                Callback("The waitress goes home.");
+                callback("The waitress goes home.");
             });
         }
         public void StopServing()

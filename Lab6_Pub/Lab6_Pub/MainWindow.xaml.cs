@@ -41,7 +41,7 @@ namespace Lab6_Pub
         Bouncer bouncer = new Bouncer();
         Bartender bartender = new Bartender();
         Waitress waitress = new Waitress();
-        
+
         //Variables for the diffrent test cases
         private int OpenBar = 120;
         private int BarOpenBouncer = 120;
@@ -73,8 +73,12 @@ namespace Lab6_Pub
             dispatcherTimer.Start();
 
             bouncer.BouncerWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
-            bartender.BartenderWork(QueuePatron, QueueBartender, BartenderUpdateList, PatronUpdateList, cleanGlassStack,dirtyGlassStack,bouncer.IsWorking,EmptyChairStack, uiPatronCountQueue);
-            waitress.Work(WaitressUpdateList, dirtyGlassStack, cleanGlassStack, QueuePatron, bouncer.IsWorking, waitressCleaningGlassesTime, waitressPickingGlassesTime, Glasses);
+
+            bartender.BartenderWork(QueuePatron, QueueBartender, BartenderUpdateList, PatronUpdateList, cleanGlassStack,
+                dirtyGlassStack, bouncer.IsWorking, EmptyChairStack, uiPatronCountQueue);
+
+            waitress.Work(WaitressUpdateList, dirtyGlassStack, cleanGlassStack, QueuePatron,
+                bouncer.IsWorking, waitressCleaningGlassesTime, waitressPickingGlassesTime, Glasses);
         }
         //Event handler for the on screen timer
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -123,6 +127,7 @@ namespace Lab6_Pub
         private void AddPatronQueue(Patron p)
         {
             QueuePatron.Enqueue(p);
+            QueueBartender.Enqueue(p);
             uiPatronCountQueue.Enqueue(p.Name);
         }
         //Creates glasses and adds them to the concurrentstack
@@ -137,7 +142,7 @@ namespace Lab6_Pub
         //Creates chairs and adds them to the concurrentstack
         private void ChairStack()
         {
-            for(int i = 0; i < Chairs; i++)
+            for (int i = 0; i < Chairs; i++)
             {
                 EmptyChairStack.Push(new Chair());
                 Console.WriteLine("Added a chair to the stack.");
