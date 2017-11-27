@@ -19,7 +19,7 @@ namespace Lab6_Pub
 
         public Patron(string name)
         {
-            name = Name;
+            this.Name = name;
             NameQueue.Enqueue(Name);
         }
 

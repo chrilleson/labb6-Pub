@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab6_Pub"
         mc:Ignorable="d"
-        Title="MainWindow" Height="474.5" Width="904.5">
+        Title="MainWindow" Height="568.5" Width="938.5">
     <Grid Margin="0,0,-8,0">
-        <ListBox x:Name="listBoxBartender" HorizontalAlignment="Left" Height="210" Margin="10,54,0,0" VerticalAlignment="Top" Width="210"/>
-        <ListBox x:Name="listBoxWaitress" HorizontalAlignment="Left" Height="210" Margin="240,54,0,0" VerticalAlignment="Top" Width="212"/>
-        <ListBox x:Name="listBoxPatron" HorizontalAlignment="Left" Height="210" Margin="470,54,0,0" VerticalAlignment="Top" Width="210"/>
+        <ListBox x:Name="listBoxBartender" HorizontalAlignment="Left" Height="210" Margin="10,54,0,0" VerticalAlignment="Top" Width="270"/>
+        <ListBox x:Name="listBoxWaitress" HorizontalAlignment="Left" Height="210" Margin="304,54,0,0" VerticalAlignment="Top" Width="272"/>
+        <ListBox x:Name="listBoxPatron" HorizontalAlignment="Left" Height="210" Margin="608,54,0,0" VerticalAlignment="Top" Width="276"/>
         <Label x:Name="lblBartender" Content="Bartender" HorizontalAlignment="Left" Height="24" Margin="25,16,0,0" VerticalAlignment="Top" Width="71"/>
-        <Label x:Name="lblWaitress" Content="Waitress" HorizontalAlignment="Left" Height="24" Margin="240,16,0,0" VerticalAlignment="Top" Width="71"/>
-        <Label x:Name="lblGuests" Content="Guests" HorizontalAlignment="Left" Height="24" Margin="470,16,0,0" VerticalAlignment="Top" Width="71"/>
-        <Label x:Name="lblGlasses" Content="Glasses on the shelf:" HorizontalAlignment="Left" Height="30" Margin="10,295,0,0" VerticalAlignment="Top" Width="210"/>
-        <Label x:Name="lblChairs" Content="Empty seats int the bar:" HorizontalAlignment="Left" Height="30" Margin="235,295,0,0" VerticalAlignment="Top" Width="217"/>
-        <Button x:Name="btnStart" Content="Open the Bar!" HorizontalAlignment="Left" Height="66" Margin="704,54,0,0" VerticalAlignment="Top" Width="155" Click="btnStart_Click"/>
-        <Label x:Name="lblTime" Content="Time before the bar closes:" HorizontalAlignment="Left" Height="30" Margin="470,295,0,0" VerticalAlignment="Top" Width="190"/>
+        <Label x:Name="lblWaitress" Content="Waitress" HorizontalAlignment="Left" Height="24" Margin="304,10,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label x:Name="lblGuests" Content="Guests" HorizontalAlignment="Left" Height="24" Margin="608,22,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label x:Name="lblGlasses" Content="Glasses on the shelf:" HorizontalAlignment="Left" Height="30" Margin="10,337,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label x:Name="lblChairs" Content="Empty seats int the bar:" HorizontalAlignment="Left" Height="30" Margin="304,337,0,0" VerticalAlignment="Top" Width="217"/>
+        <Button x:Name="btnStart" Content="Open the Bar!" HorizontalAlignment="Left" Height="66" Margin="10,390,0,0" VerticalAlignment="Top" Width="155" Click="btnStart_Click"/>
+        <Label x:Name="lblTime" Content="Time before the bar closes:" HorizontalAlignment="Left" Height="30" Margin="608,337,0,0" VerticalAlignment="Top" Width="190"/>
 
     </Grid>
 </Window>
