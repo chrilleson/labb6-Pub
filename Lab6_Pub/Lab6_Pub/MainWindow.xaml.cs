@@ -64,6 +64,8 @@ namespace Lab6_Pub
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             btnStart.IsEnabled = false;
+            BtnCouples.IsEnabled = false;
+            BtnBusLoad.IsEnabled = false;
             GlassStack();
             ChairStack();
 
@@ -71,6 +73,7 @@ namespace Lab6_Pub
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
+            lblBarOpen.Content = "The Bar is now Open!";
 
             bouncer.BouncerWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
 
@@ -91,6 +94,7 @@ namespace Lab6_Pub
             else
             {
                 lblTime.Content = $"Time before the bar closes: 0";
+                lblBarOpen.Content = "The Bar is now Closed!";
             }
         }
 

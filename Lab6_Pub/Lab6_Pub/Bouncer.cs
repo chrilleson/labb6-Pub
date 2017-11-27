@@ -56,5 +56,69 @@ namespace Lab6_Pub
                 Callback("The bouncer goes home!");
             });
         }
+        //Bus load work method
+        public void BusNight(Action<string> Callback, Action<Patron> CallbackPatron, int BarOpenBouner)
+        {
+            IsWorking = true;
+            Task.Run(() =>
+            {
+                this.CallbackPatron = CallbackPatron;
+                this.Callback = Callback;
+                stopwatch.Start();
+                while (stopwatch.Elapsed < TimeSpan.FromSeconds(BarOpenBouner))
+                {
+                    if(stopwatch.Elapsed > TimeSpan.FromSeconds(20) && TestBouncer)
+                    {
+                        BusWithPatrons();
+                        TestBouncer = false;
+                    }
+                    Thread.Sleep(rnd.Next(6000, 20000));
+                    string PatronName = NameList[rnd.Next(NameList.Count())];
+                    CallbackPatron(new Patron(PatronName));
+                    Callback($"{PatronName} entered the bar.");
+                }
+                stopwatch.Stop();
+                ClosingTime();
+                Callback($"The Bartender goes home.");
+            });
+        }
+        private void BusWithPatrons()
+        {
+            int Bus = 0;
+            while (Bus < 15)
+            {
+                string PatronName = NameList[rnd.Next(NameList.Count())];
+                CallbackPatron(new Patron(PatronName));
+                Callback($"{PatronName} entred the bar.");
+                Bus++;
+            }
+        }
+        //Couples Night work method
+        public void CouplesWork(Action<string> Callback, Action<Patron> CallbackPatron, int BarOpenBouncer)
+        {
+            IsWorking = true;
+            Task.Run(() =>
+            {
+                this.Callback = Callback;
+                this.CallbackPatron = CallbackPatron;
+                stopwatch.Start();
+                while (stopwatch.Elapsed < TimeSpan.FromSeconds(BarOpenBouncer))
+                {
+                    Thread.Sleep(rnd.Next(3000 / BouncerSpeed, 10000 / BouncerSpeed));
+                    CouplesNight();
+                }
+                stopwatch.Stop();
+                ClosingTime();
+                Callback("The bouncer goes home!");
+            });
+        }
+        private void CouplesNight()
+        {
+                string PatronName1 = NameList[rnd.Next(NameList.Count())];
+                string PatronName2 = NameList[rnd.Next(NameList.Count())];
+                CallbackPatron(new Patron(PatronName1));
+                CallbackPatron(new Patron(PatronName2));
+                Callback($"{PatronName1} entred the bar with {PatronName2}.");
+        }
     }
 }
