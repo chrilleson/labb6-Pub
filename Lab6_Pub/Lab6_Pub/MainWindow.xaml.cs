@@ -64,8 +64,6 @@ namespace Lab6_Pub
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             btnStart.IsEnabled = false;
-            BtnCouples.IsEnabled = false;
-            BtnBusLoad.IsEnabled = false;
             GlassStack();
             ChairStack();
 

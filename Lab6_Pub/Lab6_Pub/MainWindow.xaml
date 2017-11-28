@@ -15,11 +15,9 @@
         <Label x:Name="lblGuests" Content="Guests" HorizontalAlignment="Left" Height="24" Margin="608,22,0,0" VerticalAlignment="Top" Width="71"/>
         <Label x:Name="lblGlasses" Content="Glasses on the shelf:" HorizontalAlignment="Left" Height="30" Margin="10,319,0,0" VerticalAlignment="Top" Width="210"/>
         <Label x:Name="lblChairs" Content="Empty seats int the bar:" HorizontalAlignment="Left" Height="30" Margin="304,319,0,0" VerticalAlignment="Top" Width="217"/>
-        <Button x:Name="btnStart" Content="Open the Bar!" HorizontalAlignment="Left" Height="66" Margin="10,390,0,0" VerticalAlignment="Top" Width="155" Click="btnStart_Click"/>
+        <Button x:Name="btnStart" Content="Open the Bar!" HorizontalAlignment="Left" Height="66" Margin="304,374,0,0" VerticalAlignment="Top" Width="155" Click="btnStart_Click"/>
         <Label x:Name="lblTime" Content="Time before the bar closes:" HorizontalAlignment="Left" Height="30" Margin="608,319,0,0" VerticalAlignment="Top" Width="190"/>
-        <Button x:Name="BtnCouples" Content="Couples Night!" HorizontalAlignment="Left" Height="66" Margin="304,390,0,0" VerticalAlignment="Top" Width="155"/>
-        <Button x:Name="BtnBusLoad" Content="Bus Load of Patrons!" HorizontalAlignment="Left" Height="66" Margin="608,390,0,0" VerticalAlignment="Top" Width="155"/>
-        <Label x:Name="lblBarOpen" Content="The Bar is Closed!" HorizontalAlignment="Left" Height="33" Margin="304,480,0,0" VerticalAlignment="Top" Width="262" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblBarOpen" Content="The Bar is Closed!" HorizontalAlignment="Left" Height="34" Margin="304,460,0,0" VerticalAlignment="Top" Width="262" HorizontalContentAlignment="Left"/>
 
     </Grid>
 </Window>
