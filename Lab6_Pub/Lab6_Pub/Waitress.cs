@@ -10,7 +10,7 @@ namespace Lab6_Pub
 {
     public class Waitress
     {
-        /* 
+         
         private Action<string> Callback;
         private ConcurrentStack<Glass> DirtyGlassStack;
         private ConcurrentStack<Glass> CleanGlassStack;
@@ -60,6 +60,6 @@ namespace Lab6_Pub
         public void ChangeSpeed(int speed)
         {
             this.waiterSpeed = speed;
-        }*/
+        }
     }
 }
