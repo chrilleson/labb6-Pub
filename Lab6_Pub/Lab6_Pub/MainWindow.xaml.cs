@@ -72,8 +72,15 @@ namespace Lab6_Pub
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             lblBarOpen.Content = "The Bar is now Open!";
-
-            bouncer.BouncerWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
+            
+            //Regular night
+            //bouncer.BouncerWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
+            
+            //Couples night
+            //bouncer.CouplesWork(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
+            
+            //A night where it comes a bus full of patrons
+            bouncer.BusNight(PatronUpdateList, AddPatronQueue, BarOpenBouncer);
 
             bartender.BartenderWork(QueuePatron, QueueBartender, BartenderUpdateList, PatronUpdateList, cleanGlassStack,
                 dirtyGlassStack, bouncer.IsWorking, EmptyChairStack, uiPatronCountQueue);
