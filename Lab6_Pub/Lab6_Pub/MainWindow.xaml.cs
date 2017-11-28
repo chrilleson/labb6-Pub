@@ -43,12 +43,12 @@ namespace Lab6_Pub
         Waitress waitress = new Waitress();
 
         //Variables for the diffrent test cases
-        private int OpenBar = 120;
-        private int BarOpenBouncer = 120;
-        private int Glasses = 8;
-        private int Chairs = 9;
-        private int waitressPickingGlassesTime = 15000;
-        private int waitressCleaningGlassesTime = 10000;
+        private int OpenBar = 120;                          //for testing + 180
+        private int BarOpenBouncer = 120;                   //for testing + 180
+        private int Glasses = 8;                            //for testing + 12, - 3
+        private int Chairs = 9;                             //for testing  - 6, + 11
+        private int waitressPickingGlassesTime = 15000;     // for testing * 2 
+        private int waitressCleaningGlassesTime = 10000;    // for testing * 2 
         private int speed = 1;
 
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
