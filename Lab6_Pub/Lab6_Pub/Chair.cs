@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab6_Pub
 {
-    class Chair
+    public class Chair
     {
     }
 }

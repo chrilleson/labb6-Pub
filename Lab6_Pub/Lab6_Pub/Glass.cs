@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab6_Pub
 {
-    class Glass
+    public class Glass
     {
     }
 }

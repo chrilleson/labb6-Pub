@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 
 namespace Lab6_Pub
 {
-    class Patron
+    public class Patron
     {
         public string Name { get; set; }
         Queue<string> NameQueue = new Queue<string>();
@@ -19,7 +19,7 @@ namespace Lab6_Pub
 
         public Patron(string name)
         {
-            name = Name;
+            this.Name = name;
             NameQueue.Enqueue(Name);
         }
 

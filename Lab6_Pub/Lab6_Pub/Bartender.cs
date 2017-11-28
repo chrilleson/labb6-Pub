@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 
 namespace Lab6_Pub
 {
-    class Bartender
+    public class Bartender
     {
         private Action<string> Callback;
         private ConcurrentQueue<Patron> PatronQueue;
@@ -16,10 +16,10 @@ namespace Lab6_Pub
         private ConcurrentStack<Glass> DirtyGlassStack;
         private ConcurrentStack<Glass> CleanGlassStack;
         private ConcurrentStack<Chair> FreeChairStack;
-        public bool BarIsOpen { get; set; }
+        public bool IsWorking { get; set; }
         private int bartenderSpeed = 1;
 
-        public void BartenderWork(ConcurrentQueue<Patron> patronQueue, ConcurrentQueue<Patron> bartenderQueue, Action<string> callback, Action<string> PatronListCallback, ConcurrentStack<Glass> cleanGlassStack, ConcurrentStack<Glass> dirtyGlassStack, bool bartenderIsWorking, ConcurrentStack<Chair> freeChairStack, ConcurrentQueue<string> uiPatronCountDequeue )
+        public void BartenderWork(ConcurrentQueue<Patron> patronQueue, ConcurrentQueue<Patron> bartenderQueue, Action<string> callback, Action<string> PatronListCallback, ConcurrentStack<Glass> cleanGlassStack, ConcurrentStack<Glass> dirtyGlassStack, bool bartenderIsWorking, ConcurrentStack<Chair> freeChairStack, ConcurrentQueue<string> uiPatronCountDequeue)
         {
             this.Callback = callback;
             this.PatronQueue = patronQueue;
@@ -27,14 +27,15 @@ namespace Lab6_Pub
             this.DirtyGlassStack = dirtyGlassStack;
             this.CleanGlassStack = cleanGlassStack;
             this.FreeChairStack = freeChairStack;
-            this.BarIsOpen = bartenderIsWorking;
+            this.IsWorking = bartenderIsWorking;
+
             Task.Run(() =>
-           {
-               while(BarIsOpen || !uiPatronCountDequeue.IsEmpty)
+            {
+               while (IsWorking || !uiPatronCountDequeue.IsEmpty)
                {
-                   if(!PatronQueue.IsEmpty && !BartenderQueue.IsEmpty)
+                   if (!PatronQueue.IsEmpty && !BartenderQueue.IsEmpty)
                    {
-                       if(!cleanGlassStack.IsEmpty)
+                       if (!cleanGlassStack.IsEmpty)
                        {
                            cleanGlassStack.TryPop(out Glass g);
                            Thread.Sleep(1000 / bartenderSpeed);
@@ -58,15 +59,11 @@ namespace Lab6_Pub
                    }
                }
                Callback("The Bartender goes home.");
-           });
+            });
         }
         public void StopServing()
         {
-            BarIsOpen = false;
-        }
-        public void ChangeSpeed(int speed)
-        {
-            this.bartenderSpeed = speed;
+            IsWorking = false;
         }
     }
 }
