@@ -14,8 +14,8 @@ namespace Lab6_Pub
         Queue<string> NameQueue = new Queue<string>();
         Queue<string> temporaryQueue = new Queue<string>();
 
-        private int PatronDrinkTimeMin = 10000;     //for testing  * 2
-        private int PatronDrinkTimeMax = 20000;     //for testing * 2
+        private int PatronDrinkTimeMin = 10000;     //for testing / 2
+        private int PatronDrinkTimeMax = 20000;     //for testing / 2
 
         public Patron(string name)
         {
